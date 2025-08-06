@@ -34,7 +34,7 @@ Instalacja pluginu wymaga wykonania kilku prostych kroków na serwerze, na któr
 
 2.  Sklonuj repozytorium za pomocą `git` (metoda zalecana):
     ```bash
-    git clone [https://github.com/TWOJA_NAZWA_UŻYTKOWNIKA/TWÓJ_LINK_DO_REPOZYTORIUM.git](https://github.com/TWOJA_NAZWA_UŻYTKOWNIKA/TWÓJ_LINK_DO_REPOZYTORIUM.git) IMGW-Meteo
+    git clone [https://github.com/mstojek/IMGW-Meteo.git](https://github.com/mstojek/IMGW-Meteo.git) IMGW-Meteo
     ```
     > **Alternatywnie**, jeśli nie używasz gita, możesz pobrać pliki `.zip` z GitHub, rozpakować je i umieścić folder `IMGW-Meteo` w katalogu `domoticz/plugins`.
 

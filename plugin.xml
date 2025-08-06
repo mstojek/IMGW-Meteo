@@ -1,0 +1,35 @@
+<plugin key="IMGWMeteo" name="IMGW Stacja Pogodowa" author="Gemini" version="1.7.4" wikilink="https://danepubliczne.imgw.pl/apiinfo" externallink="https://danepubliczne.imgw.pl/api/data/">
+    <description>
+        <h2>IMGW Stacja Pogodowa v1.7.4</h2>
+        <p>Plugin pobiera dane z publicznego API IMGW. Każda stacja (Meteo lub Synop) powinna być dodana jako osobny sprzęt.</p>
+        <p>W polu <b>'Nazwa'</b> dla tego sprzętu wpisz nazwę lokalizacji (np. 'Kraków' lub 'Warszawa-Okęcie'). Będzie ona prefiksem dla wszystkich urządzeń.</p>
+        <hr/>
+        <h3>Jak znaleźć ID stacji?</h3>
+        <ul style="list-style-type:square; margin-left:20px;">
+            <li>
+                <b>Stacje METEOROLOGICZNE (opady 10-min, temp. gruntu):</b><br/>
+                <a href="https://danepubliczne.imgw.pl/api/data/meteo/" target="_blank" style="color: white;">https://danepubliczne.imgw.pl/api/data/meteo/</a> (szukaj: <code>"kod_stacji"</code>)
+            </li>
+            <br/>
+            <li>
+                <b>Stacje SYNOPTYCZNE (ciśnienie, temp. powietrza):</b><br/>
+                <a href="https://danepubliczne.imgw.pl/api/data/synop/" target="_blank" style="color: white;">https://danepubliczne.imgw.pl/api/data/synop/</a> (szukaj: <code>"id_stacji"</code>)
+            </li>
+        </ul>
+    </description>
+    <params>
+        <param field="Mode1" label="Typ danych" width="200px">
+            <options>
+                <option label="Synoptyczne" value="synop" default="true"/>
+                <option label="Meteorologiczne" value="meteo"/>
+            </options>
+        </param>
+        <param field="Address" label="ID stacji" width="150px" required="true" default="12566"/>
+        <param field="Mode6" label="Tryb debugowania" width="150px">
+            <options>
+                <option label="Tak" value="Debug"/>
+                <option label="Nie" value="Normal" default="true" />
+            </options>
+        </param>
+    </params>
+</plugin>

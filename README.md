@@ -8,7 +8,9 @@ Plugin pozwala na integrację dwóch typów danych:
 
 Dzięki prostej konfiguracji możesz monitorować wiele różnych stacji i lokalizacji jednocześnie.
 
-![przyklad-urzadzen](https://i.imgur.com/8Qe54Vq.png)
+<img width="1199" height="146" alt="IMGW-Meteo-plugin-temperatura" src="https://github.com/user-attachments/assets/111ec2ea-1815-430d-bf67-9a1c4acf6f94" />
+<img width="1202" height="291" alt="IMGW-Meteo-plugin-Pogoda" src="https://github.com/user-attachments/assets/f5cae73e-4cca-400f-979f-18ae1bb1bd02" />
+
 
 ## Kluczowe Funkcje
 

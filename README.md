@@ -60,11 +60,11 @@ Konfiguracja pluginu jest bardzo prosta i elastyczna. Opiera się na zasadzie: *
 
 #### **Przykład 1: Dodanie stacji synoptycznej dla Krakowa**
 
-* **Nazwa:** `Kraków (Synop)` *(Ta nazwa będzie prefiksem dla urządzeń, np. "Kraków (Synop) - Ciśnienie")*
+* **Nazwa:** `IMGW Kraków` *(Ta nazwa będzie prefiksem dla urządzeń, np. "IMGW Kraków - Ciśnienie")*
 * **Typ danych:** `Synoptyczne`
 * **ID stacji:** `12566`
 
-![konfiguracja-synop](https://i.imgur.com/f8p8n1O.png)
+<img width="986" height="674" alt="IMGW-plugin-konfiguracja" src="https://github.com/user-attachments/assets/67cba369-a280-4fc5-bbab-5ad10552a851" />
 
 ---
 

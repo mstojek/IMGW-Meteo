@@ -9,7 +9,7 @@
     <description>
         <h2>IMGW Stacja Pogodowa v1.7.4</h2>
         <p>Plugin pobiera dane z publicznego API IMGW. Każda stacja (Meteo lub Synop) powinna być dodana jako osobny sprzęt.</p>
-        <p>W polu <b>'Nazwa'</b> dla tego sprzętu wpisz nazwę lokalizacji (np. 'Kraków' lub 'Warszawa-Okęcie'). Będzie ona prefiksem dla wszystkich urządzeń.</p>
+        <p>W polu <b> 'Nazwa' </b> dla tego sprzętu wpisz nazwę lokalizacji (np. 'Kraków' lub 'Warszawa-Okęcie'). Będzie ona prefiksem dla wszystkich urządzeń.</p>
         <hr/>
         <h3>Jak znaleźć ID stacji?</h3>
         <ul style="list-style-type:square; margin-left:20px;">

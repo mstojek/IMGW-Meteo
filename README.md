@@ -9,10 +9,10 @@ Plugin pozwala na integrację dwóch typów danych:
 Dzięki prostej konfiguracji możesz monitorować wiele różnych stacji i lokalizacji jednocześnie.
 
 **Zakładka "Temperatura":**
-<img width="1199" height="146" alt="IMGW-Meteo-plugin-temperatura" src="https://github.com/user-attachments/assets/111ec2ea-1815-430d-bf67-9a1c4acf6f94" />
-**Zakładka "Pogoda":**
-<img width="1202" height="291" alt="IMGW-Meteo-plugin-Pogoda" src="https://github.com/user-attachments/assets/f5cae73e-4cca-400f-979f-18ae1bb1bd02" />
+<img width="1189" height="138" alt="IMGW-Meteo-plugin-temperatura" src="https://github.com/user-attachments/assets/1c6d1261-b720-4af3-a0d1-cd197b8d0319" />
 
+**Zakładka "Pogoda":**
+<img width="1202" height="291" alt="IMGW-Meteo-plugin-Pogoda" src="https://github.com/user-attachments/assets/be218758-5bad-4adb-a0aa-44872effe3e1" />
 
 ## Kluczowe Funkcje
 
@@ -67,7 +67,7 @@ Konfiguracja pluginu jest bardzo prosta i elastyczna. Opiera się na zasadzie: *
 * **ID stacji:** `12566`
 * **Interwał odpytywania (minuty):** `10` *(Domyślnie 10 minut. Zmień według potrzeb. Wartość większa niż 10 minut może spowodowac że dane Meteorologiczne o opadach będą niepoprawne)*
 
-<img width="986" height="674" alt="IMGW-plugin-konfiguracja" src="https://github.com/user-attachments/assets/67cba369-a280-4fc5-bbab-5ad10552a851" />
+<img width="974" height="733" alt="IMGW-plugin-konfiguracja" src="https://github.com/user-attachments/assets/5d094c02-39dd-46a1-beac-c5ff0d9878e6" />
 
 ---
 

@@ -81,7 +81,7 @@ class BasePlugin:
 
         if self.data_type == "meteo":
             if self.UNIT_METEO_RAIN not in Devices: Domoticz.Device(Name="Deszcz", Unit=self.UNIT_METEO_RAIN, TypeName="Rain", Used=1).Create()
-            if self.UNIT_METEO_TEMP_GROUND not in Devices: Domoticz.Device(Name="Temperatura gruntu", Unit=self.UNIT_METEO_TEMP_GROUND, TypeName="Temperature", Used=1).Create()
+            if self.UNIT_METEO_TEMP_GROUND not in Devices: Domoticz.Device(Name="Temp. gruntu", Unit=self.UNIT_METEO_TEMP_GROUND, TypeName="Temperature", Used=1).Create()
             if self.UNIT_METEO_TEMP_HUM not in Devices: Domoticz.Device(Name="Temp/Wilg", Unit=self.UNIT_METEO_TEMP_HUM, TypeName="Temp+Hum", Used=1).Create()
             if self.UNIT_METEO_WIND not in Devices: Domoticz.Device(Name="Wiatr", Unit=self.UNIT_METEO_WIND, TypeName="Wind", Used=1).Create()
         elif self.data_type == "synop":

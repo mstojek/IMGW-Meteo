@@ -78,6 +78,7 @@ Konfiguracja pluginu jest bardzo prosta i elastyczna. Opiera się na zasadzie: *
     * **Nazwa:** `Kraków Wola (Meteo)`
     * **Typ danych:** `Meteorologiczne`
     * **ID stacji:** `250190470`
+    * **Interwał odpytywania (minuty):** `10`
 
 Dzięki takiemu podejściu możesz dodać dowolną liczbę stacji z różnych miast Polski.
 

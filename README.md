@@ -91,7 +91,7 @@ To kluczowy element konfiguracji. Listy stacji wraz z ich ID znajdziesz pod poni
     * Naciśnij `Ctrl+F` i wyszukaj nazwę stacji.
     * Skopiuj wartość z pola `"kod_stacji"`.
 
-* <b>Stacje SYNOPTYCZNE (ciśnienie, temp. powietrza):</b>
+* <b>Stacje SYNOPTYCZNE (ciśnienie, opady, temp. powietrza):</b>
     * Otwórz link: [https://danepubliczne.imgw.pl/api/data/synop/](https://danepubliczne.imgw.pl/api/data/synop/)
     * Naciśnij `Ctrl+F` i wyszukaj nazwę miasta.
     * Skopiuj wartość z pola `"id_stacji"`.

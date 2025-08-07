@@ -4,7 +4,7 @@ Plugin dla platformy Domoticz umożliwiający pobieranie aktualnych danych pogod
 
 Plugin pozwala na integrację dwóch typów danych:
 * **Synoptycznych**, zawierających m.in. temperaturę powietrza, ciśnienie i sumę opadów.
-* **Meteorologicznych**, zawierających m.in. intensywność opadów, porywy wiatru i temperaturę gruntu.
+* **Meteorologicznych**, zawierających m.in. intensywność opadów, porywy wiatru i temperaturę powietrza.
 
 Dzięki prostej konfiguracji możesz monitorować wiele różnych stacji i lokalizacji jednocześnie.
 
@@ -22,6 +22,8 @@ Dzięki prostej konfiguracji możesz monitorować wiele różnych stacji i lokal
 * ✅ Prosta i elastyczna konfiguracja oparta o zasadę: **jedna stacja = jeden wpis na liście sprzętu**.
 * ✅ Możliwość monitorowania wielu lokalizacji jednocześnie.
 * ✅ W pełni spolszczony interfejs i opisy.
+* ✅ **Konfigurowalny interwał** odświeżania danych.
+* ✅ Odporność na brakujące dane z niektórych stacji.
 
 ## Instalacja
 
@@ -63,6 +65,7 @@ Konfiguracja pluginu jest bardzo prosta i elastyczna. Opiera się na zasadzie: *
 * **Nazwa:** `IMGW Kraków` *(Ta nazwa będzie prefiksem dla urządzeń, np. "IMGW Kraków - Ciśnienie")*
 * **Typ danych:** `Synoptyczne`
 * **ID stacji:** `12566`
+* **Interwał odpytywania (minuty):** `10` *(Domyślnie 10 minut. Zmień według potrzeb. Wartość większa niż 10 minut może spowodowac że dane Meteorologiczne o opadach będą niepoprawne)*
 
 <img width="986" height="674" alt="IMGW-plugin-konfiguracja" src="https://github.com/user-attachments/assets/67cba369-a280-4fc5-bbab-5ad10552a851" />
 
@@ -82,7 +85,7 @@ Dzięki takiemu podejściu możesz dodać dowolną liczbę stacji z różnych mi
 
 To kluczowy element konfiguracji. Listy stacji wraz z ich ID znajdziesz pod poniższymi linkami:
 
-* <b>Stacje METEOROLOGICZNE (opady 10-min, temp. gruntu):</b>
+* <b>Stacje METEOROLOGICZNE (opady 10-min, temp. powietrza):</b>
     * Otwórz link: [https://danepubliczne.imgw.pl/api/data/meteo/](https://danepubliczne.imgw.pl/api/data/meteo/)
     * Naciśnij `Ctrl+F` i wyszukaj nazwę stacji.
     * Skopiuj wartość z pola `"kod_stacji"`.
@@ -104,7 +107,7 @@ W zależności od wybranego typu danych, plugin automatycznie utworzy następuj�
 
 #### Po wybraniu typu `Meteorologiczne`:
 * `Temperatura gruntu`
-* `Wilgotność`
+* `Temp/Wilg` (Temperatura i wilgotność powietrza)
 * `Deszcz` (Intensywność i suma opadów z 10 min)
 * `Wiatr` (Kierunek, prędkość i porywy)
 

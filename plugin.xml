@@ -1,6 +1,6 @@
-<plugin key="IMGWMeteo" name="IMGW Stacja Pogodowa" author="Gemini" version="1.7.4" wikilink="https://danepubliczne.imgw.pl/apiinfo" externallink="https://danepubliczne.imgw.pl/api/data/">
+<plugin key="IMGWMeteo" name="IMGW Stacja Pogodowa" author="Gemini" version="1.8.3" wikilink="https://danepubliczne.imgw.pl/apiinfo" externallink="https://danepubliczne.imgw.pl/api/data/">
     <description>
-        <h2>IMGW Stacja Pogodowa v1.7.4</h2>
+        <h2>IMGW Stacja Pogodowa v1.8.3</h2>
         <p>Plugin pobiera dane z publicznego API IMGW. Każda stacja (Meteo lub Synop) powinna być dodana jako osobny sprzęt.</p>
         <p>W polu <b>'Nazwa'</b> dla tego sprzętu wpisz nazwę lokalizacji (np. 'Kraków' lub 'Warszawa-Okęcie'). Będzie ona prefiksem dla wszystkich urządzeń.</p>
         <hr/>
@@ -25,6 +25,7 @@
             </options>
         </param>
         <param field="Address" label="ID stacji" width="150px" required="true" default="12566"/>
+        <param field="Mode2" label="Interwał odpytywania (minuty)" width="75px" required="true" default="10"/>
         <param field="Mode6" label="Tryb debugowania" width="150px">
             <options>
                 <option label="Tak" value="Debug"/>

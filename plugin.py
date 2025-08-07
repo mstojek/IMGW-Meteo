@@ -2,12 +2,12 @@
 #
 # IMGW Stacja Pogodowa Plugin
 # Author: Gemini, 2025
-# Version: 1.7.4 - Simplified data type labels.
+# Version: 1.8.3 - Reordered parameters as requested (Mode2 for Interval, Mode6 for Debug).
 #
 """
-<plugin key="IMGWMeteo" name="IMGW Stacja Pogodowa" author="Gemini" version="1.7.4" wikilink="https://danepubliczne.imgw.pl/apiinfo" externallink="https://danepubliczne.imgw.pl/api/data/">
+<plugin key="IMGWMeteo" name="IMGW Stacja Pogodowa" author="Gemini" version="1.8.3" wikilink="https://danepubliczne.imgw.pl/apiinfo" externallink="https://danepubliczne.imgw.pl/api/data/">
     <description>
-        <h2>IMGW Stacja Pogodowa v1.7.4</h2>
+        <h2>IMGW Stacja Pogodowa v1.8.3</h2>
         <p>Plugin pobiera dane z publicznego API IMGW. Każda stacja (Meteo lub Synop) powinna być dodana jako osobny sprzęt.</p>
         <p>W polu <b>'Nazwa'</b> dla tego sprzętu wpisz nazwę lokalizacji (np. 'Kraków' lub 'Warszawa-Okęcie'). Będzie ona prefiksem dla wszystkich urządzeń.</p>
         <hr/>
@@ -32,6 +32,7 @@
             </options>
         </param>
         <param field="Address" label="ID stacji" width="150px" required="true" default="12566"/>
+        <param field="Mode2" label="Interwał odpytywania (minuty)" width="75px" required="true" default="10"/>
         <param field="Mode6" label="Tryb debugowania" width="150px">
             <options>
                 <option label="Tak" value="Debug"/>
@@ -46,8 +47,7 @@ import json
 
 class BasePlugin:
     # Definicje jednostek
-    # Jednostki 1-4 dla Meteo, 5-8 dla Synop
-    UNIT_METEO_RAIN, UNIT_METEO_TEMP_GROUND, UNIT_METEO_HUMIDITY, UNIT_METEO_WIND = 1, 2, 3, 4
+    UNIT_METEO_RAIN, UNIT_METEO_TEMP_GROUND, UNIT_METEO_TEMP_HUM, UNIT_METEO_WIND = 1, 2, 3, 4
     UNIT_SYNOP_TEMP_HUM, UNIT_SYNOP_BAROMETER, UNIT_SYNOP_RAIN_DAILY, UNIT_SYNOP_WIND = 5, 6, 7, 8
 
     def __init__(self):
@@ -58,10 +58,21 @@ class BasePlugin:
         self.api_connection = None
 
     def onStart(self):
-        Domoticz.Log(f"Plugin IMGW Stacja Pogodowa (v1.7.4) wystartował dla '{Parameters['Name']}'.")
-        if Parameters["Mode6"] == "Debug":
+        Domoticz.Log(f"Plugin IMGW Stacja Pogodowa (v1.8.3) wystartował dla '{Parameters['Name']}'.")
+        
+        if Parameters.get("Mode6") == "Debug":
             Domoticz.Debugging(1)
             Domoticz.Log("Tryb debugowania włączony.")
+
+        try:
+            interval_minutes = int(Parameters["Mode2"])
+            # 1 heartbeat = 10s, więc 6 uderzeń serca = 1 minuta
+            self.poll_interval = interval_minutes * 6
+            if self.poll_interval < 6: self.poll_interval = 6 # Minimum 1 minuta
+        except:
+            self.poll_interval = 60 # Domyślnie 10 minut w razie błędu
+        
+        Domoticz.Log(f"Interwał odpytywania ustawiony na {self.poll_interval / 6} minut.")
 
         self.data_type = Parameters["Mode1"]
         self.station_id = Parameters["Address"].strip()
@@ -71,7 +82,7 @@ class BasePlugin:
         if self.data_type == "meteo":
             if self.UNIT_METEO_RAIN not in Devices: Domoticz.Device(Name="Deszcz", Unit=self.UNIT_METEO_RAIN, TypeName="Rain", Used=1).Create()
             if self.UNIT_METEO_TEMP_GROUND not in Devices: Domoticz.Device(Name="Temperatura gruntu", Unit=self.UNIT_METEO_TEMP_GROUND, TypeName="Temperature", Used=1).Create()
-            if self.UNIT_METEO_HUMIDITY not in Devices: Domoticz.Device(Name="Wilgotność", Unit=self.UNIT_METEO_HUMIDITY, TypeName="Humidity", Used=1).Create()
+            if self.UNIT_METEO_TEMP_HUM not in Devices: Domoticz.Device(Name="Temp/Wilg", Unit=self.UNIT_METEO_TEMP_HUM, TypeName="Temp+Hum", Used=1).Create()
             if self.UNIT_METEO_WIND not in Devices: Domoticz.Device(Name="Wiatr", Unit=self.UNIT_METEO_WIND, TypeName="Wind", Used=1).Create()
         elif self.data_type == "synop":
             if self.UNIT_SYNOP_TEMP_HUM not in Devices: Domoticz.Device(Name="Temp/Wilg", Unit=self.UNIT_SYNOP_TEMP_HUM, TypeName="Temp+Hum", Used=1).Create()
@@ -126,11 +137,16 @@ class BasePlugin:
             rain_rate = rain_10min * 6
             current_total = float(Devices[self.UNIT_METEO_RAIN].sValue.split(';')[1]) if ';' in Devices[self.UNIT_METEO_RAIN].sValue else 0.0
             UpdateDevice(self.UNIT_METEO_RAIN, 0, f"{rain_rate:.1f};{current_total + rain_10min:.2f}")
+
         if data.get("temperatura_gruntu") is not None:
             UpdateDevice(self.UNIT_METEO_TEMP_GROUND, 0, str(data["temperatura_gruntu"]))
-        if data.get("wilgotnosc_wzgledna") is not None:
-            humidity = float(data["wilgotnosc_wzgledna"])
-            UpdateDevice(self.UNIT_METEO_HUMIDITY, int(humidity), "0" if humidity < 40 else ("2" if humidity > 70 else "1"))
+        
+        if data.get("temperatura_powietrza") is not None and data.get("wilgotnosc_wzgledna") is not None:
+            temp = float(data["temperatura_powietrza"])
+            hum = float(data["wilgotnosc_wzgledna"])
+            hum_stat = 0 if hum < 40 else (2 if hum > 70 else 1)
+            UpdateDevice(self.UNIT_METEO_TEMP_HUM, 0, f"{temp:.1f};{hum:.1f};{hum_stat}")
+
         if data.get("wiatr_kierunek") is not None and data.get("wiatr_srednia_predkosc") is not None:
             bearing = int(data["wiatr_kierunek"])
             direction_str = self.get_wind_direction_str(bearing)
@@ -179,22 +195,16 @@ _plugin = BasePlugin()
 
 def onStart():
     _plugin.onStart()
-
 def onStop():
     _plugin.onStop()
-
 def onConnect(Connection, Status, Description):
     _plugin.onConnect(Connection, Status, Description)
-
 def onMessage(Connection, Data):
     _plugin.onMessage(Connection, Data)
-
 def onHeartbeat():
     _plugin.onHeartbeat()
-
 def onError(Connection, Status, Description):
     _plugin.onError(Connection, Status, Description)
-
 def onDisconnect(Connection):
     _plugin.onDisconnect(Connection)
 

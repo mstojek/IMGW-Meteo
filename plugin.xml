@@ -7,12 +7,12 @@
         <h3>Jak znaleźć ID stacji?</h3>
         <ul style="list-style-type:square; margin-left:20px;">
             <li>
-                <b>Stacje METEOROLOGICZNE (opady 10-min, temp. gruntu):</b><br/>
+                <b>Stacje METEOROLOGICZNE (opady 10-min, temp. powietrza):</b><br/>
                 <a href="https://danepubliczne.imgw.pl/api/data/meteo/" target="_blank" style="color: white;">https://danepubliczne.imgw.pl/api/data/meteo/</a> (szukaj: <code>"kod_stacji"</code>)
             </li>
             <br/>
             <li>
-                <b>Stacje SYNOPTYCZNE (ciśnienie, temp. powietrza):</b><br/>
+                <b>Stacje SYNOPTYCZNE (ciśnienie, opady, temp. powietrza):</b><br/>
                 <a href="https://danepubliczne.imgw.pl/api/data/synop/" target="_blank" style="color: white;">https://danepubliczne.imgw.pl/api/data/synop/</a> (szukaj: <code>"id_stacji"</code>)
             </li>
         </ul>

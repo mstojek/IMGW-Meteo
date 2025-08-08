@@ -12,7 +12,7 @@ Dzięki prostej konfiguracji możesz monitorować wiele różnych stacji i lokal
 <img width="1189" height="138" alt="IMGW-Meteo-plugin-temperatura" src="https://github.com/user-attachments/assets/1c6d1261-b720-4af3-a0d1-cd197b8d0319" />
 
 **Zakładka "Pogoda":**
-<img width="1202" height="291" alt="IMGW-Meteo-plugin-Pogoda" src="https://github.com/user-attachments/assets/be218758-5bad-4adb-a0aa-44872effe3e1" />
+<img width="1184" height="272" alt="IMGW-Meteo-plugin-Pogoda" src="https://github.com/user-attachments/assets/3f7a9b2c-e9cd-4b22-88ba-44954cc8473b" />
 
 ## Kluczowe Funkcje
 
